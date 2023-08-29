@@ -4,13 +4,6 @@ import axios from "axios";
 export default function AdminProducts() {
 
   useEffect(() => {
-    // 取出 token
-    const token = document.cookie
-      .split('; ')
-      .find((row) => row.startsWith('hexToken='))
-      ?.split('=')[1];
-
-    axios.defaults.headers.common['Authorization'] = token;
     (async () => {
       const productRes = await axios.get(
         `/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`
