@@ -1,18 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import ProductModal from '../../componets/ProductModal';
+import DeleteModal from '../../componets/DeleteModal';
 import { Modal } from 'bootstrap';
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
   const [navigation, setNavigation] = useState({});
   const productModal = useRef(null);
+  const deleteModal = useRef(null);
 
   const [type, setType] = useState('create');
   const [tempProduct, setTempProduct] = useState({});
 
   useEffect(() => {
     productModal.current = new Modal('#productModal', {
+      backdrop: 'static',
+    });
+    deleteModal.current = new Modal('#deleteModal', {
       backdrop: 'static',
     });
     getProducts();
@@ -36,6 +41,29 @@ export default function AdminProducts() {
     productModal.current.hide();
   };
 
+  const openDeleteModal = (product) => {
+    setTempProduct(product);
+    deleteModal.current.show();
+  };
+
+  const closeDeleteModal = () => {
+    deleteModal.current.hide();
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      const res = await axios.delete(
+        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`
+      );
+      if (res.data.success) {
+        getProducts();
+        closeDeleteModal();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="p-3">
       <ProductModal
@@ -44,6 +72,12 @@ export default function AdminProducts() {
         tempProduct={tempProduct}
         type={type}
       ></ProductModal>
+      <DeleteModal
+        close={closeDeleteModal}
+        text={tempProduct.title}
+        id={tempProduct.id}
+        handleDelete={deleteProduct}
+      ></DeleteModal>
       <h3>產品列表</h3>
       <hr />
       <div className="text-end">
@@ -84,6 +118,7 @@ export default function AdminProducts() {
                   <button
                     type="button"
                     className="btn btn-outline-danger btn-sm ms-2"
+                    onClick={() => openDeleteModal(product)}
                   >
                     刪除
                   </button>
