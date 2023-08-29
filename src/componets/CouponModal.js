@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { MessageContext, handleSuccessMessage, handleErrorMessage } from '../store/messageStore';
 
 export default function CouponModal({
   closeModal,
@@ -14,7 +15,9 @@ export default function CouponModal({
     due_date: 1555459200,
     code: 'testCode',
   });
+
   const [date, setDate] = useState(new Date());
+  const [, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     if (type === 'create') {
@@ -70,8 +73,10 @@ export default function CouponModal({
       getCoupons();
       closeModal();
       console.log(res);
+      handleSuccessMessage(dispatch, res);
     } catch (error) {
       console.log(error);
+      handleErrorMessage(dispatch, error);
     }
   };
 

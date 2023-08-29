@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { MessageContext, handleSuccessMessage, handleErrorMessage } from '../store/messageStore';
 
 export default function ProductModal({
   closeProductModal,
@@ -18,6 +19,8 @@ export default function ProductModal({
     is_enabled: 1,
     imageUrl: '',
   });
+
+  const [, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     if (type === 'create') {
@@ -60,23 +63,22 @@ export default function ProductModal({
   const submit = async () => {
     try {
       let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
-      let method = "post";
+      let method = 'post';
 
-      if (type === "edit") {
+      if (type === 'edit') {
         api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${tempProduct.id}`;
-        method = "put";
+        method = 'put';
       }
-      const res = await axios[method](
-        api,
-        {
-          data: tempData,
-        }
-      );
+      const res = await axios[method](api, {
+        data: tempData,
+      });
       getProducts();
       closeProductModal();
       console.log(res);
+      handleSuccessMessage(dispatch, res);
     } catch (error) {
       console.log(error);
+      handleErrorMessage(dispatch, error);
     }
   };
 
@@ -92,7 +94,7 @@ export default function ProductModal({
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              { type === "create" ? "建立新商品" : `編輯 - ${tempProduct.title}`}
+              {type === 'create' ? '建立新商品' : `編輯 - ${tempProduct.title}`}
             </h1>
             <button
               type="button"
