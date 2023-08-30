@@ -93,53 +93,59 @@ export default function AdminProducts() {
       <div className="text-end">
         <button
           type="button"
-          className="btn btn-primary btn-sm"
+          className="btn btn-success"
           onClick={() => openProductModal('create', {})}
         >
           建立新商品
         </button>
       </div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">分類</th>
-            <th scope="col">名稱</th>
-            <th scope="col">售價</th>
-            <th scope="col">啟用狀態</th>
-            <th scope="col">編輯</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => {
-            return (
-              <tr key={product.id}>
-                <td>{product.category}</td>
-                <td>{product.title}</td>
-                <td>{product.price}</td>
-                <td>{product.is_enabled ? '啟用' : '未啟用'}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={() => openProductModal('edit', product)}
-                  >
-                    編輯
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-danger btn-sm ms-2"
-                    onClick={() => openDeleteModal(product)}
-                  >
-                    刪除
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-
-      <Pagination pagination={pagination} changePage={getProducts}></Pagination>
+      <div className="p-3 bg-white tableBlock mt-3">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">分類</th>
+              <th scope="col">名稱</th>
+              <th scope="col">售價</th>
+              <th scope="col">啟用狀態</th>
+              <th scope="col">編輯</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => {
+              return (
+                <tr key={product.id}>
+                  <td>{product.category}</td>
+                  <td>{product.title}</td>
+                  <td>{product.price}</td>
+                  <td>{product.is_enabled ? '啟用' : '未啟用'}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => openProductModal('edit', product)}
+                    >
+                      編輯
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-outline-danger btn-sm ms-md-3"
+                      onClick={() => openDeleteModal(product)}
+                    >
+                      刪除
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div className="d-flex justify-content-center mt-3">
+        <Pagination
+          pagination={pagination}
+          changePage={getProducts}
+        ></Pagination>
+      </div>
     </div>
   );
 }

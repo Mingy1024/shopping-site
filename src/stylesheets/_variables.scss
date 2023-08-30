@@ -300,7 +300,7 @@ $cyans: (
 // scss-docs-start theme-color-variables
 $primary:       orange; // $blue !default;
 $secondary:     $gray-600 !default;
-$success:       $green !default;
+$success:       #06c152; // $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
@@ -317,9 +317,11 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark,
+  "dark":       #322e46, // $dark,
   // custom
-  "lightGray": #e8e8e8
+  "lightGray": #e8e8e8,
+  "darkBlue" : #4e46ab,
+  "lightBlue" : #e9f1fc
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -1577,10 +1579,10 @@ $progress-bar-transition:           width .6s ease !default;
 // List group
 
 // scss-docs-start list-group-variables
-$list-group-color:                  var(--#{$prefix}body-color) !default;
-$list-group-bg:                     var(--#{$prefix}body-bg) !default;
+$list-group-color:                  #fff; // var(--#{$prefix}body-color) !default;
+$list-group-bg:                     transparent; // var(--#{$prefix}body-bg) !default;
 $list-group-border-color:           var(--#{$prefix}border-color) !default;
-$list-group-border-width:           var(--#{$prefix}border-width) !default;
+$list-group-border-width:           0; // var(--#{$prefix}border-width) !default;
 $list-group-border-radius:          var(--#{$prefix}border-radius) !default;
 
 $list-group-item-padding-y:         $spacer * .5 !default;
@@ -1591,7 +1593,7 @@ $list-group-item-color-scale:       40% !default; // Deprecated in v5.3.0
 // fusv-enable
 
 $list-group-hover-bg:               var(--#{$prefix}tertiary-bg) !default;
-$list-group-active-color:           $component-active-color !default;
+$list-group-active-color:           #322e46; // $component-active-color !default;
 $list-group-active-bg:              $component-active-bg !default;
 $list-group-active-border-color:    $list-group-active-bg !default;
 
