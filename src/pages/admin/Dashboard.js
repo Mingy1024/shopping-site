@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import { Outlet, useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
-import Message from '../../componets/Message';
+import Message from '../../components/Message';
 import { MessageContext, messageReducer, initState } from '../../store/messageStore';
 
 export default function Dashboard() {

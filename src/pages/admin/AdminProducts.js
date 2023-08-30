@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, useContext } from 'react';
 import axios from 'axios';
-import ProductModal from '../../componets/ProductModal';
-import DeleteModal from '../../componets/DeleteModal';
-import Pagination from '../../componets/Pagination';
+import ProductModal from '../../components/ProductModal';
+import DeleteModal from '../../components/DeleteModal';
+import Pagination from '../../components/Pagination';
 import { Modal } from 'bootstrap';
 import {
   MessageContext,
