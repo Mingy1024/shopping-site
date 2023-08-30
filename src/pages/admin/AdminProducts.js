@@ -1,9 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
 import axios from 'axios';
 import ProductModal from '../../componets/ProductModal';
 import DeleteModal from '../../componets/DeleteModal';
 import Pagination from '../../componets/Pagination';
 import { Modal } from 'bootstrap';
+import {
+  MessageContext,
+  handleSuccessMessage,
+  handleErrorMessage,
+} from '../../store/messageStore';
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -13,6 +18,7 @@ export default function AdminProducts() {
 
   const [type, setType] = useState('create');
   const [tempProduct, setTempProduct] = useState({});
+  const [, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     productModal.current = new Modal('#productModal', {
@@ -60,9 +66,11 @@ export default function AdminProducts() {
       if (res.data.success) {
         getProducts();
         closeDeleteModal();
+        handleSuccessMessage(dispatch, res);
       }
     } catch (error) {
       console.log(error);
+      handleErrorMessage(dispatch, error);
     }
   };
 

@@ -1,9 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
 import axios from 'axios';
 import CouponModal from '../../componets/CouponModal';
 import DeleteModal from '../../componets/DeleteModal';
 import Pagination from '../../componets/Pagination';
 import { Modal } from 'bootstrap';
+import {
+  MessageContext,
+  handleSuccessMessage,
+  handleErrorMessage,
+} from '../../store/messageStore';
 
 export default function AdminCoupons() {
   const [coupons, setCoupons] = useState([]);
@@ -13,6 +18,7 @@ export default function AdminCoupons() {
 
   const [type, setType] = useState('create');
   const [tempCoupon, setTempCoupon] = useState({});
+  const [, dispatch] = useContext(MessageContext);
 
   useEffect(() => {
     couponModal.current = new Modal('#productModal', {
@@ -60,9 +66,11 @@ export default function AdminCoupons() {
       if (res.data.success) {
         getCoupons();
         closeDeleteModal();
+        handleSuccessMessage(dispatch, res);
       }
     } catch (error) {
       console.log(error);
+      handleErrorMessage(dispatch, error);
     }
   };
 
