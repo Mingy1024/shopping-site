@@ -101,55 +101,61 @@ export default function AdminCoupons() {
       <div className="text-end">
         <button
           type="button"
-          className="btn btn-primary btn-sm"
+          className="btn btn-success"
           onClick={() => openCouponModal('create', {})}
         >
           建立新優惠券
         </button>
       </div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">標題</th>
-            <th scope="col">折扣</th>
-            <th scope="col">到期日</th>
-            <th scope="col">優惠碼</th>
-            <th scope="col">啟用狀態</th>
-            <th scope="col">編輯</th>
-          </tr>
-        </thead>
-        <tbody>
-          {coupons.map((product) => {
-            return (
-              <tr key={product.id}>
-                <td>{product.title}</td>
-                <td>{product.percent}</td>
-                <td>{convertDate(new Date(product.due_date))}</td>
-                <td>{product.code}</td>
-                <td>{product.is_enabled ? '啟用' : '未啟用'}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={() => openCouponModal('edit', product)}
-                  >
-                    編輯
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-danger btn-sm ms-2"
-                    onClick={() => openDeleteModal(product)}
-                  >
-                    刪除
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-
-      <Pagination pagination={pagination} changePage={getCoupons}></Pagination>
+      <div className="p-3 bg-white tableBlock mt-3">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">標題</th>
+              <th scope="col">折扣</th>
+              <th scope="col">到期日</th>
+              <th scope="col">優惠碼</th>
+              <th scope="col">啟用狀態</th>
+              <th scope="col">編輯</th>
+            </tr>
+          </thead>
+          <tbody>
+            {coupons.map((product) => {
+              return (
+                <tr key={product.id}>
+                  <td>{product.title}</td>
+                  <td>{product.percent}</td>
+                  <td>{convertDate(new Date(product.due_date))}</td>
+                  <td>{product.code}</td>
+                  <td>{product.is_enabled ? '啟用' : '未啟用'}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => openCouponModal('edit', product)}
+                    >
+                      編輯
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-outline-danger btn-sm ms-2"
+                      onClick={() => openDeleteModal(product)}
+                    >
+                      刪除
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div className="d-flex justify-content-center mt-3">
+        <Pagination
+          pagination={pagination}
+          changePage={getCoupons}
+        ></Pagination>
+      </div>
     </div>
   );
 }
