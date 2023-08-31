@@ -11,3 +11,9 @@
 .tableBlock {
     border-radius: 20px;
 }
+
+.tableOverflow {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}

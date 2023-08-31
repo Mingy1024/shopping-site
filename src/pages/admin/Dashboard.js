@@ -61,7 +61,7 @@ export default function Dashboard() {
         </div>
       </nav>
       <div className="d-flex" style={{ minHeight: 'calc(100vh - 56px)' }}>
-        <div className="bg-dark" style={{ width: '200px' }}>
+        <div className="bg-dark" style={{ width: '150px' }}>
           <ul className="list-group list-group-flush">
             <NavLink
               className="list-group-item list-group-item-action py-3"
@@ -86,7 +86,7 @@ export default function Dashboard() {
             </NavLink>
           </ul>
         </div>
-        <div className="w-100 bg-lightBlue">{token && <Outlet />}</div>
+        <div className="bg-lightBlue" style={{ width: 'calc(100% - 150px)' }}>{token && <Outlet />}</div>
       </div>
     </MessageContext.Provider>
   );

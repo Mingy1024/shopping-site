@@ -107,7 +107,7 @@ export default function AdminCoupons() {
           建立新優惠券
         </button>
       </div>
-      <div className="p-3 bg-white tableBlock mt-3">
+      <div className="p-3 bg-white tableBlock tableOverflow mt-3">
         <table className="table">
           <thead>
             <tr>

@@ -46,7 +46,7 @@ export default function AdminOrders() {
       />
       <h3>訂單列表</h3>
       <hr />
-      <div className="p-3 bg-white tableBlock mt-3">
+      <div className="p-3 bg-white tableBlock tableOverflow mt-3">
         <table className="table">
           <thead>
             <tr>
