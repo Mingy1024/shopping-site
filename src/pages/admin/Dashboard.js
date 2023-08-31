@@ -54,6 +54,7 @@ export default function Dashboard() {
                 onClick={logout}
               >
                 登出
+                <i className="bi bi-box-arrow-right ps-2"></i>
               </button>
             </li>
           </ul>

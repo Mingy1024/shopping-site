@@ -37,7 +37,7 @@ export default function CouponModal({
 
   const handleChange = (e) => {
     const { value, name } = e.target;
-    if (['price', 'origin_price'].includes(name)) {
+    if (name === "percent") {
       setTempData({
         ...tempData,
         [name]: Number(value),
@@ -71,9 +71,13 @@ export default function CouponModal({
         },
       });
       getCoupons();
-      closeModal();
       console.log(res);
-      handleSuccessMessage(dispatch, res);
+      if (res.data.success) {
+        handleSuccessMessage(dispatch, res);
+        closeModal();
+      } else {
+        handleErrorMessage(dispatch, res);
+      }
     } catch (error) {
       console.log(error);
       handleErrorMessage(dispatch, error);
