@@ -60,9 +60,9 @@ export default function Dashboard() {
           </ul>
         </div>
       </nav>
-      <div className="d-flex" style={{ minHeight: 'calc(100vh - 56px)' }}>
-        <div className="bg-dark" style={{ width: '150px' }}>
-          <ul className="list-group list-group-flush">
+      <div className="d-flex flex-column flex-md-row dashboardContent bg-lightBlue">
+        <div className="bg-dark sideMenu">
+          <ul className="list-group list-group-flush d-flex flex-row flex-md-column">
             <NavLink
               className="list-group-item list-group-item-action py-3"
               to="/admin/products"
@@ -86,7 +86,7 @@ export default function Dashboard() {
             </NavLink>
           </ul>
         </div>
-        <div className="bg-lightBlue" style={{ width: 'calc(100% - 150px)' }}>{token && <Outlet />}</div>
+        <div className="listContainer">{token && <Outlet />}</div>
       </div>
     </MessageContext.Provider>
   );
