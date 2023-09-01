@@ -128,7 +128,7 @@ export default function AdminProducts() {
                     </button>
                     <button
                       type="button"
-                      className="btn btn-outline-danger btn-sm ms-md-3"
+                      className="btn btn-outline-danger btn-sm ms-2"
                       onClick={() => openDeleteModal(product)}
                     >
                       刪除
