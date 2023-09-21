@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-riceYellow shadow-sm sticky-top py-0">
@@ -31,33 +33,33 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item">
-              <a
+              <NavLink
                 className="nav-link text-center py-4 active"
                 aria-current="page"
-                href="#"
+                to='/'
               >
                 首頁
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-center py-4" href="#">
+              <NavLink className="nav-link text-center py-4" to='products'>
                 本店商品
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-center py-4" href="#">
+              <NavLink className="nav-link text-center py-4" to='products'>
                 常見問題
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-center py-4" href="#">
+              <NavLink className="nav-link text-center py-4" to='products'>
                 購物須知
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-center py-4" href="#">
+              <NavLink className="nav-link text-center py-4" to='products'>
                 最新消息
-              </a>
+              </NavLink>
             </li>
           </ul>
           <div class="input-group search ms-auto">

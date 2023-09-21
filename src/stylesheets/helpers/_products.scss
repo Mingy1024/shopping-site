@@ -1,0 +1,58 @@
+.productList {
+    min-height: calc(100vh - 72px);
+    margin-top: 20px;
+}
+
+.category {
+    list-style: none;
+    padding: 0;
+}
+
+.categoryItem {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    color: black;
+    &:hover {
+        color: $primary;
+    }
+}
+
+.productImg {
+    height: 250px;
+    object-fit: cover;
+}
+
+.active {
+    background: #c9ae91;
+}
+
+.lineThrough {
+    font-size: 14px;
+    text-decoration: line-through;
+}
+
+.card {
+    border: 0;
+    &:hover {
+        cursor: pointer;
+        .addCart {
+            display: block;
+        }
+    }
+}
+
+.addCart {
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    display: none;
+}
+
+.banner {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
